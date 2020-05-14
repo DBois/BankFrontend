@@ -2,6 +2,8 @@
   import Transfer from "./components/Transfer.svelte";
   import GetAccount from "./components/GetAccount.svelte";
   import GetAccounts from "./components/GetAccounts.svelte";
+  import GetCustomer from "./components/GetCustomer.svelte";
+  import CreateCustomer from "./components/CreateCustomer.svelte";
 </script>
 
 <style type="text/scss">
@@ -36,4 +38,6 @@
   <Transfer />
   <GetAccount />
   <GetAccounts />
+  <GetCustomer />
+  <CreateCustomer />
 </main>

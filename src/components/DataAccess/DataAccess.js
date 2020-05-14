@@ -17,3 +17,19 @@ export const getAccount = async (number) => {
 export const getAccounts = async (cpr) => {
 	return await fetch(`${URL}accounts/customer=${cpr}/`).then((data) => data.json());
 };
+
+export const getCustomer = async (cpr) => {
+	return await fetch(`${URL}customers/${cpr}/`).then((data) => data.json());
+};
+
+export const postCustomer = async (data) => {
+	return await fetch(`${URL}customers/`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+		.then((data) => data.json())
+		.catch((err) => console.log('ERR: ' + JSON.stringify(err)));
+};
