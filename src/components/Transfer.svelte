@@ -3,6 +3,7 @@
   import Button from "./modules/Button.svelte";
   import Spinner from "./modules/Spinner.svelte";
   import { transferMoney } from "./DataAccess/DataAccess";
+
   let amount = "",
     source,
     target,
@@ -11,24 +12,37 @@
     transferTime;
   let response = "";
 
+  const limitDecimals = array => {
+    let newNumb = array[0] + array[1].substring(0, 2);
+    return array[1].length == 1
+      ? newNumb + "0"
+      : array[0] + array[1].substring(0, 2);
+  };
+
   const transfer = async () => {
     // Reset values on submit
     loading = true;
     response = "";
-    date = "";
 
+    let newAmount;
+    if (amount.includes(",")) {
+      let decimals = amount.split(",");
+      newAmount = limitDecimals(decimals);
+    } else if (amount.includes(".")) {
+      let decimals = amount.split(".");
+      newAmount = limitDecimals(decimals);
+    }
     const searchQuery = {
-      amount,
+      amount: newAmount,
       source,
       target
     };
     const URL = `http://localhost:8081/accounts/transfer/`;
     response = await transferMoney(searchQuery);
-    var date = new Date(response.time);
+    let date = new Date(response.time);
     transferDate = date.toLocaleDateString();
     transferTime = date.toLocaleTimeString();
     loading = false;
-    console.log(loading);
   };
   // Used to validate the input for the amount parameter
   const parseAmount = e => {
@@ -96,7 +110,7 @@
   <h2>Transfer money</h2>
   {#if response !== ''}
     <p>
-      Transfered ${response.amount} to account: "{response.target}" from
+      Transfered ${response.amount / 100} to account: "{response.target}" from
       account: "{response.source}" at {transferTime} {transferDate}
     </p>
   {/if}
