@@ -13,3 +13,7 @@ export const transferMoney = async (data) => {
 export const getAccount = async (number) => {
 	return await fetch(`${URL}accounts/${number}/`).then((data) => data.json());
 };
+
+export const getAccounts = async (cpr) => {
+	return await fetch(`${URL}accounts/customer=${cpr}/`).then((data) => data.json());
+};

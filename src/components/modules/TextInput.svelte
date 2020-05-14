@@ -13,9 +13,6 @@
   input:focus {
     outline: none;
   }
-  .input_container:focus {
-    border-color: cyan;
-  }
 
   .input_container {
     display: flex;

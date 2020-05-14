@@ -1,6 +1,7 @@
 <script>
   import Transfer from "./components/Transfer.svelte";
   import GetAccount from "./components/GetAccount.svelte";
+  import GetAccounts from "./components/GetAccounts.svelte";
 </script>
 
 <style type="text/scss">
@@ -34,4 +35,5 @@
   <h1>Universal Bank App</h1>
   <Transfer />
   <GetAccount />
+  <GetAccounts />
 </main>
