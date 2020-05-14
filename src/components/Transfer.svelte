@@ -162,7 +162,7 @@
           <tr>
             <td>{response.source}</td>
             <td>{response.target}</td>
-            <td>$ {response.amount}</td>
+            <td>$ {response.amount / 100}</td>
             <td>{transferTime + ' ' + transferDate}</td>
           </tr>
         </tbody>
