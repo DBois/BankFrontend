@@ -34,7 +34,24 @@
   </div>
   <div class="response">
     {#if response !== undefined}
-      <p>{JSON.stringify(response)}</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Balance</th>
+            <th scope="col">Account No.</th>
+            <th scope="col">Bank Name</th>
+            <th scope="col">Bank CVR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{response.balance}</th>
+            <th>{response.number}</th>
+            <th>{response.bank.name}</th>
+            <th>{response.bank.cvr}</th>
+          </tr>
+        </tbody>
+      </table>
     {/if}
 
   </div>

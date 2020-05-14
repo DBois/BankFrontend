@@ -12,6 +12,7 @@
     transferTime;
   let response = "";
 
+  // TODO: Round up if 3rd element is bigger thand 2nd
   const limitDecimals = array => {
     let newNumb = array[0] + array[1].substring(0, 2);
     return array[1].length == 1
