@@ -49,7 +49,7 @@
           {#each response as account, i}
             <tr>
               <th scope="row">{i}</th>
-              <th>{account.balance}</th>
+              <th>$ {account.balance / 100}</th>
               <th>{account.number}</th>
               <th>{account.bank.name}</th>
               <th>{account.bank.cvr}</th>

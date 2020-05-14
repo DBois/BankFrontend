@@ -45,7 +45,7 @@
         </thead>
         <tbody>
           <tr>
-            <th>{response.balance}</th>
+            <th>$ {response.balance / 100}</th>
             <th>{response.number}</th>
             <th>{response.bank.name}</th>
             <th>{response.bank.cvr}</th>

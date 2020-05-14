@@ -32,6 +32,8 @@
     } else if (amount.includes(".")) {
       let decimals = amount.split(".");
       newAmount = limitDecimals(decimals);
+    } else {
+      newAmount = Number(amount) * 100;
     }
     const searchQuery = {
       amount: newAmount,
@@ -126,8 +128,7 @@
         on:mouseup|preventDefault
         type="text"
         name="amount"
-        placeholder="100"
-        pattern="[0-9]+(,|.)?[0-9]+" />
+        placeholder="100" />
     </div>
     {#if loading === true}
       <Spinner />
