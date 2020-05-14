@@ -13,6 +13,7 @@
     font-size: 1.2em;
     border-radius: 0.3em;
     margin: 0;
+    margin-left: 0.5em;
   }
 </style>
 

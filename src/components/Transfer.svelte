@@ -107,16 +107,27 @@
   input:focus {
     outline: none;
   }
+  table {
+    margin: 0;
+  }
+  table,
+  td,
+  th {
+    border: solid;
+    border-width: 0.1em;
+    border-color: black;
+  }
+
+  .table-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 
 <div class="transfer-container">
   <h2>Transfer money</h2>
-  {#if response !== ''}
-    <p>
-      Transfered ${response.amount / 100} to account: "{response.target}" from
-      account: "{response.source}" at {transferTime} {transferDate}
-    </p>
-  {/if}
+
   <form on:submit|preventDefault={transfer}>
     <TextInput bind:value={source} placeholder="Source account" />
     <TextInput bind:value={target} placeholder="Target account" />
@@ -137,4 +148,26 @@
     {/if}
 
   </form>
+  {#if response !== ''}
+    <h2 style="color: green">Transfer succes!</h2>
+    <div class="table-container">
+      <table class="table-sm">
+        <thead>
+          <th>Source</th>
+          <th>Target</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{response.source}</td>
+            <td>{response.target}</td>
+            <td>$ {response.amount}</td>
+            <td>{transferTime + ' ' + transferDate}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {/if}
+
 </div>
