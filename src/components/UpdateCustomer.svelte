@@ -37,7 +37,7 @@
 </style>
 
 <div class="get-account-container">
-  <h2>Create customer</h2>
+  <h2>Update customer</h2>
   <form>
     <div class="input-container">
       <TextInput bind:value={data.name} placeholder="Name" />
@@ -49,7 +49,7 @@
       {/if}
     </div>
     {#if response}
-      <p>Customer created!</p>
+      <p>Updated customer!</p>
     {:else}
       <!-- else content here -->
     {/if}

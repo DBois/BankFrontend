@@ -3,7 +3,7 @@
   import GetAccount from "./components/GetAccount.svelte";
   import GetAccounts from "./components/GetAccounts.svelte";
   import GetCustomer from "./components/GetCustomer.svelte";
-  import CreateCustomer from "./components/CreateCustomer.svelte";
+  import UpdateCustomer from "./components/UpdateCustomer.svelte";
   let exception = undefined;
 </script>
 
@@ -44,7 +44,7 @@
   <GetAccount bind:exception />
   <GetAccounts bind:exception />
   <GetCustomer bind:exception />
-  <CreateCustomer bind:exception />
+  <UpdateCustomer bind:exception />
   {#if exception}
     <div class="exception-handler">
       <h2 name="exceptionHolder">
