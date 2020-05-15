@@ -141,22 +141,28 @@
   <h2>Transfer money</h2>
 
   <form on:submit|preventDefault={transfer}>
-    <TextInput bind:value={source} placeholder="Source account" />
-    <TextInput bind:value={target} placeholder="Target account" />
+    <TextInput
+      name="transfer-source"
+      bind:value={source}
+      placeholder="Source account" />
+    <TextInput
+      name="transfer-target"
+      bind:value={target}
+      placeholder="Target account" />
     <div class="input_container">
       <span class="currencyinput">$</span>
       <input
+        name="transfer-amount"
         bind:value={amount}
         on:keydown={parseAmount}
         on:mouseup|preventDefault
         type="text"
-        name="amount"
         placeholder="100" />
     </div>
     {#if loading === true}
       <Spinner />
     {:else}
-      <Button text="Transfer" />
+      <Button name="transfer-submit" text="Transfer" />
     {/if}
 
   </form>
@@ -172,10 +178,10 @@
         </thead>
         <tbody>
           <tr>
-            <td>{response.source}</td>
-            <td>{response.target}</td>
-            <td>$ {response.amount / 100}</td>
-            <td>{transferTime + ' ' + transferDate}</td>
+            <td name="transfer-ressource">{response.source}</td>
+            <td name="transfer-restarget">{response.target}</td>
+            <td name="transfer-resamount">$ {response.amount / 100}</td>
+            <td name="transfer-restime">{transferTime + ' ' + transferDate}</td>
           </tr>
         </tbody>
       </table>

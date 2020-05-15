@@ -40,8 +40,14 @@
   <h2>Update customer</h2>
   <form>
     <div class="input-container">
-      <TextInput bind:value={data.name} placeholder="Name" />
-      <TextInput bind:value={data.cpr} placeholder="CPR number" />
+      <TextInput
+        name="updatecustomer-name"
+        bind:value={data.name}
+        placeholder="Name" />
+      <TextInput
+        name="updatecustomer-cpr"
+        bind:value={data.cpr}
+        placeholder="CPR number" />
       {#if loading === true}
         <Spinner />
       {:else}
@@ -49,7 +55,7 @@
       {/if}
     </div>
     {#if response}
-      <p>Updated customer!</p>
+      <p name="updatecustomer-res">Updated customer!</p>
     {:else}
       <!-- else content here -->
     {/if}

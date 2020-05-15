@@ -1,5 +1,5 @@
 <script>
-  export let value, placeholder;
+  export let value, placeholder, name;
 </script>
 
 <style>
@@ -25,5 +25,5 @@
 </style>
 
 <div class="input_container">
-  <input bind:value type="text" name="source" {placeholder} />
+  <input {name} bind:value type="text" {placeholder} />
 </div>

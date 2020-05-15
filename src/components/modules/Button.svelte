@@ -1,5 +1,5 @@
 <script>
-  export let text, onclick;
+  export let text, onclick, name;
 </script>
 
 <style>
@@ -19,6 +19,6 @@
 
 <div class="button">
 
-  <button on:click={onclick}>{text}</button>
+  <button {name} on:click={onclick}>{text}</button>
 
 </div>

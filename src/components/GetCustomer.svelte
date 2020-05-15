@@ -34,11 +34,14 @@
 <div class="get-account-container">
   <h2>Get customer</h2>
   <div class="input-container">
-    <TextInput bind:value={cpr} placeholder="CPR number" />
+    <TextInput
+      name="getcustomer-cpr"
+      bind:value={cpr}
+      placeholder="CPR number" />
     {#if loading === true}
       <Spinner />
     {:else}
-      <Button text="Submit" onclick={onSubmit} />
+      <Button name="getcustomer-submit" text="Submit" onclick={onSubmit} />
     {/if}
   </div>
   <div class="response">
@@ -46,9 +49,9 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">CPR</th>
-            <th scope="col">Account Numbers</th>
+            <th name="getcustomer-name" scope="col">Name</th>
+            <th name="getcustomer-cpr" scope="col">CPR</th>
+            <th name="getcustomer-numbers" scope="col">Account Numbers</th>
           </tr>
         </thead>
         <tbody>

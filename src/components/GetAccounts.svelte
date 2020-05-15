@@ -36,11 +36,14 @@
 <div class="get-accounts-container">
   <h2>Get customer accounts</h2>
   <div class="input-container">
-    <TextInput bind:value={cpr} placeholder="CPR Number" />
+    <TextInput
+      name="getaccounts-cpr"
+      bind:value={cpr}
+      placeholder="CPR Number" />
     {#if loading === true}
       <Spinner />
     {:else}
-      <Button text="Submit" onclick={onSubmit} />
+      <Button name="getaccounts-submit" text="Submit" onclick={onSubmit} />
     {/if}
   </div>
   <div class="response">
@@ -59,10 +62,10 @@
           {#each response as account, i}
             <tr>
               <th scope="row">{i}</th>
-              <th>$ {account.balance / 100}</th>
-              <th>{account.number}</th>
-              <th>{account.bank.name}</th>
-              <th>{account.bank.cvr}</th>
+              <th name={i + 'balance'}>$ {account.balance / 100}</th>
+              <th name={i + 'number'}>{account.number}</th>
+              <th name={i + 'bankname'}>{account.bank.name}</th>
+              <th name={i + 'cvr'}>{account.bank.cvr}</th>
             </tr>
           {/each}
         </tbody>

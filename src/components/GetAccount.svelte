@@ -35,11 +35,14 @@
 <div class="get-account-container">
   <h2>Get account</h2>
   <div class="input-container">
-    <TextInput bind:value={accountNumber} placeholder="Account number" />
+    <TextInput
+      name="getaccount-number"
+      bind:value={accountNumber}
+      placeholder="Account number" />
     {#if loading === true}
       <Spinner />
     {:else}
-      <Button text="Submit" onclick={onSubmit} />
+      <Button name="getaccount-submit" text="Submit" onclick={onSubmit} />
     {/if}
   </div>
   <div class="response">
@@ -47,10 +50,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Balance</th>
-            <th scope="col">Account No.</th>
-            <th scope="col">Bank Name</th>
-            <th scope="col">Bank CVR</th>
+            <th name="getaccount-resbalance" scope="col">Balance</th>
+            <th name="getaccount-resnumber" scope="col">Account No.</th>
+            <th name="getaccount-resname" scope="col">Bank Name</th>
+            <th name="getaccount-rescvr" scope="col">Bank CVR</th>
           </tr>
         </thead>
         <tbody>
