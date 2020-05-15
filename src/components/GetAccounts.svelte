@@ -61,7 +61,7 @@
         <tbody>
           {#each response as account, i}
             <tr>
-              <th scope="row">{i}</th>
+              <th scope="row">{i + 1}</th>
               <th name={i + 'balance'}>$ {account.balance / 100}</th>
               <th name={i + 'number'}>{account.number}</th>
               <th name={i + 'bankname'}>{account.bank.name}</th>

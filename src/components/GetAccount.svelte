@@ -50,18 +50,18 @@
       <table class="table">
         <thead>
           <tr>
-            <th name="getaccount-resbalance" scope="col">Balance</th>
-            <th name="getaccount-resnumber" scope="col">Account No.</th>
-            <th name="getaccount-resname" scope="col">Bank Name</th>
-            <th name="getaccount-rescvr" scope="col">Bank CVR</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Account No.</th>
+            <th scope="col">Bank Name</th>
+            <th scope="col">Bank CVR</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th>$ {response.balance / 100}</th>
-            <th>{response.number}</th>
-            <th>{response.bank.name}</th>
-            <th>{response.bank.cvr}</th>
+            <td name="getaccount-resbalance">$ {response.balance / 100}</td>
+            <td name="getaccount-resnumber">{response.number}</td>
+            <td name="getaccount-resname">{response.bank.name}</td>
+            <td name="getaccount-rescvr">{response.bank.cvr}</td>
           </tr>
         </tbody>
       </table>
