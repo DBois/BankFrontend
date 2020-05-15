@@ -4,13 +4,21 @@
   import Spinner from "./modules/Spinner.svelte";
   import { getCustomer } from "./DataAccess/DataAccess";
   let cpr, loading, response;
+  export let exception;
 
   const onSubmit = async e => {
+    exception = undefined;
     loading = true;
     response = undefined;
-    response = await getCustomer(cpr);
-    console.log(response);
-    loading = false;
+    try {
+      await getCustomer(cpr)
+        .then(res => res.json())
+        .then(json => (response = json));
+      loading = false;
+    } catch (err) {
+      await err.json().then(e => (exception = e));
+      loading = false;
+    }
   };
 </script>
 
@@ -34,7 +42,7 @@
     {/if}
   </div>
   <div class="response">
-    {#if response !== undefined}
+    {#if response}
       <table class="table">
         <thead>
           <tr>

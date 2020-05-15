@@ -6,13 +6,21 @@
   let data = { name: "", cpr: "" },
     loading,
     response;
+  export let exception;
 
   const onSubmit = async e => {
+    exception = undefined;
     loading = true;
     response = undefined;
-    response = await postCustomer(data);
-    console.log(response);
-    loading = false;
+    try {
+      await postCustomer(data)
+        .then(res => res.json())
+        .then(json => (response = json));
+      loading = false;
+    } catch (err) {
+      await err.json().then(e => (exception = e));
+      loading = false;
+    }
   };
 </script>
 

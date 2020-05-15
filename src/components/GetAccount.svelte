@@ -4,12 +4,22 @@
   import Spinner from "./modules/Spinner.svelte";
   import { getAccount } from "./DataAccess/DataAccess";
   let accountNumber, loading, response;
+  export let exception;
 
   const onSubmit = async e => {
+    exception = undefined;
     loading = true;
     response = undefined;
-    response = await getAccount(accountNumber);
-    loading = false;
+    try {
+      await getAccount(accountNumber)
+        .then(res => res.json())
+        .then(r => (response = r));
+      console.log(response);
+      loading = false;
+    } catch (err) {
+      await err.json().then(e => (exception = e));
+      loading = false;
+    }
   };
 </script>
 

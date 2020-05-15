@@ -4,6 +4,7 @@
   import GetAccounts from "./components/GetAccounts.svelte";
   import GetCustomer from "./components/GetCustomer.svelte";
   import CreateCustomer from "./components/CreateCustomer.svelte";
+  let exception = undefined;
 </script>
 
 <style type="text/scss">
@@ -35,9 +36,17 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
     crossorigin="anonymous" />
   <h1>Universal Bank App</h1>
-  <Transfer />
-  <GetAccount />
-  <GetAccounts />
-  <GetCustomer />
-  <CreateCustomer />
+  <Transfer bind:exception />
+  <GetAccount bind:exception />
+  <GetAccounts bind:exception />
+  <GetCustomer bind:exception />
+  <CreateCustomer bind:exception />
+  {#if exception}
+    <div class="exception-handler">
+      <p name="exceptionHolder">
+        {exception.detailMessage ? exception.detailMessage : exception.message}
+      </p>
+    </div>
+  {/if}
+
 </main>

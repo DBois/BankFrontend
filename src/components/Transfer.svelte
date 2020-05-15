@@ -9,8 +9,9 @@
     target,
     transferDate,
     loading = false,
-    transferTime;
-  let response = "";
+    transferTime,
+    response;
+  export let exception;
 
   // TODO: Round up if 3rd element is bigger thand 2nd
   const limitDecimals = array => {
@@ -22,6 +23,7 @@
 
   const transfer = async () => {
     // Reset values on submit
+    exception = undefined;
     loading = true;
     response = "";
 
@@ -40,12 +42,22 @@
       source,
       target
     };
-    const URL = `http://localhost:8081/accounts/transfer/`;
-    response = await transferMoney(searchQuery);
+    try {
+      await transferMoney(searchQuery)
+        .then(res => res.json())
+        .then(json => (response = json));
+      loading = false;
+    } catch (err) {
+      await err.json().then(e => (exception = e));
+      console.log(exception);
+
+      loading = false;
+    }
+
+    if (exception !== undefined) return;
     let date = new Date(response.time);
     transferDate = date.toLocaleDateString();
     transferTime = date.toLocaleTimeString();
-    loading = false;
   };
   // Used to validate the input for the amount parameter
   const parseAmount = e => {
@@ -148,7 +160,7 @@
     {/if}
 
   </form>
-  {#if response !== ''}
+  {#if response}
     <h2 style="color: green">Transfer succes!</h2>
     <div class="table-container">
       <table class="table-sm">
