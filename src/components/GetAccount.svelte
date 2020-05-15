@@ -13,7 +13,7 @@
     try {
       await getAccount(accountNumber)
         .then(res => res.json())
-        .then(r => (response = r));
+        .then(json => (response = json));
       console.log(response);
       loading = false;
     } catch (err) {
