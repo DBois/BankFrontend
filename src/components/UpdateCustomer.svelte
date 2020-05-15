@@ -51,7 +51,10 @@
       {#if loading === true}
         <Spinner />
       {:else}
-        <Button text="Update" onclick={onSubmit} />
+        <Button
+        name="updatecustomer-submit"
+        text="Update" 
+        onclick={onSubmit} />
       {/if}
     </div>
     {#if response}
