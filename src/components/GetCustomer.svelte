@@ -49,9 +49,9 @@
       <table class="table">
         <thead>
           <tr>
-            <th name="getcustomer-name" scope="col">Name</th>
-            <th name="getcustomer-cpr" scope="col">CPR</th>
-            <th name="getcustomer-numbers" scope="col">Account Numbers</th>
+            <th name="getcustomer-resname" scope="col">Name</th>
+            <th name="getcustomer-rescpr" scope="col">CPR</th>
+            <th name="getcustomer-resnumbers" scope="col">Account Numbers</th>
           </tr>
         </thead>
         <tbody>
