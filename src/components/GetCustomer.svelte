@@ -16,10 +16,15 @@
         .then(json => (response = json));
       loading = false;
     } catch (err) {
-      await err.json().then(e => {
-        exception = e;
+      if (err.json) {
+        await err.json().then(e => {
+          exception = e;
+          loading = false;
+        });
+      } else {
+        exception = err;
         loading = false;
-      });
+      }
     }
   };
 </script>

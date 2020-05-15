@@ -48,7 +48,7 @@
   {#if exception}
     <div class="exception-handler">
       <h2 name="exceptionHolder">
-        {exception.detailMessage ? exception.detailMessage : exception.message}
+        {exception.detailMessage ? exception.detailMessage : exception}
       </h2>
     </div>
   {/if}

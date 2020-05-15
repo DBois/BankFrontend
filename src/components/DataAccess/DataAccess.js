@@ -8,37 +8,61 @@ export const transferMoney = async (data) => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(data),
-		}).then((res) => {
-			if (res.ok) resolve(res);
-			else reject(res);
-		});
+		})
+			.then((res) => {
+				if (res.ok) resolve(res);
+				else reject(res);
+			})
+			.catch(() => {
+				reject('Network error');
+			});
 	});
 };
 
 export const getAccount = async (number) => {
 	return new Promise((resolve, reject) => {
-		fetch(`${URL}accounts/${number}/`).then((res) => {
-			if (res.ok) resolve(res);
-			else reject(res);
-		});
+		fetch(`${URL}accounts/${number}/`)
+			.then((res) => {
+				if (res.ok) resolve(res);
+				else {
+					reject(res);
+				}
+			})
+			.catch(() => {
+				reject('Network error');
+			});
 	});
 };
 
 export const getAccounts = async (cpr) => {
 	return new Promise((resolve, reject) => {
-		fetch(`${URL}accounts/customer=${cpr}/`).then((res) => {
-			if (res.ok) resolve(res);
-			else reject(res);
-		});
+		fetch(`${URL}accounts/customer=${cpr}/`)
+			.then((res) => {
+				if (res.ok) resolve(res);
+				else
+					reject(res).catch(() => {
+						reject('Network error');
+					});
+			})
+			.catch(() => {
+				reject('Network error');
+			});
 	});
 };
 
 export const getCustomer = async (cpr) => {
 	return new Promise((resolve, reject) => {
-		fetch(`${URL}customers/${cpr}/`).then((res) => {
-			if (res.ok) resolve(res);
-			else reject(res);
-		});
+		fetch(`${URL}customers/${cpr}/`)
+			.then((res) => {
+				if (res.ok) resolve(res);
+				else
+					reject(res).catch(() => {
+						reject('Network error');
+					});
+			})
+			.catch(() => {
+				reject('Network error');
+			});
 	});
 };
 
@@ -50,9 +74,13 @@ export const postCustomer = async (data) => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(data),
-		}).then((res) => {
-			if (res.ok) resolve(res);
-			else reject(res);
-		});
+		})
+			.then((res) => {
+				if (res.ok) resolve(res);
+				else reject(res);
+			})
+			.catch(() => {
+				reject('Network error');
+			});
 	});
 };

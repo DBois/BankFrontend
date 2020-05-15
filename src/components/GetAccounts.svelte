@@ -6,7 +6,7 @@
   let cpr, loading, response;
   export let exception;
 
-  const onSubmit = async e => {
+  const onSubmit = async () => {
     exception = undefined;
     loading = true;
     response = undefined;
@@ -17,8 +17,15 @@
       console.log(response);
       loading = false;
     } catch (err) {
-      await err.json().then(e => (exception = e));
-      loading = false;
+      if (err.json) {
+        await err.json().then(e => {
+          exception = err;
+          loading = false;
+        });
+      } else {
+        exception = err;
+        loading = false;
+      }
     }
   };
 </script>

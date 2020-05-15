@@ -17,8 +17,15 @@
       console.log(response);
       loading = false;
     } catch (err) {
-      await err.json().then(e => (exception = e));
-      loading = false;
+      if (err.json) {
+        await err.json().then(e => {
+          exception = e;
+          loading = false;
+        });
+      } else {
+        exception = err;
+        loading = false;
+      }
     }
   };
 </script>

@@ -48,10 +48,16 @@
         .then(json => (response = json));
       loading = false;
     } catch (err) {
-      await err.json().then(e => (exception = e));
-      console.log(exception);
-
-      loading = false;
+      if (err.json) {
+        await err.json().then(e => {
+          exception = e;
+          console.log(exception);
+          loading = false;
+        });
+      } else {
+        exception = err;
+        loading = false;
+      }
     }
 
     if (exception !== undefined) return;
