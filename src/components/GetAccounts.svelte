@@ -19,7 +19,8 @@
     } catch (err) {
       if (err.json) {
         await err.json().then(e => {
-          exception = err;
+          exception = e;
+          console.log(exception);
           loading = false;
         });
       } else {
