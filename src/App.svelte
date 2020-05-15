@@ -21,6 +21,10 @@
     font-size: 4em;
     font-weight: 100;
   }
+  h2 {
+    color: red;
+    font-weight: 400;
+  }
 
   @media (min-width: 640px) {
     main {
@@ -43,9 +47,9 @@
   <CreateCustomer bind:exception />
   {#if exception}
     <div class="exception-handler">
-      <p name="exceptionHolder">
+      <h2 name="exceptionHolder">
         {exception.detailMessage ? exception.detailMessage : exception.message}
-      </p>
+      </h2>
     </div>
   {/if}
 
