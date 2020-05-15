@@ -16,8 +16,10 @@
         .then(json => (response = json));
       loading = false;
     } catch (err) {
-      await err.json().then(e => (exception = e));
-      loading = false;
+      await err.json().then(e => {
+        exception = e;
+        loading = false;
+      });
     }
   };
 </script>
@@ -49,16 +51,18 @@
       <table class="table">
         <thead>
           <tr>
-            <th name="getcustomer-resname" scope="col">Name</th>
-            <th name="getcustomer-rescpr" scope="col">CPR</th>
-            <th name="getcustomer-resnumbers" scope="col">Account Numbers</th>
+            <th scope="col">Name</th>
+            <th scope="col">CPR</th>
+            <th scope="col">Account Numbers</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th>{response.name}</th>
-            <th>{response.cpr}</th>
-            <th>{response.accountNumbers.join(', ')}</th>
+            <th name="getcustomer-resname">{response.name}</th>
+            <th name="getcustomer-rescpr">{response.cpr}</th>
+            <th name="getcustomer-resnumbers">
+              {response.accountNumbers.join(', ')}
+            </th>
           </tr>
         </tbody>
       </table>
